@@ -59,6 +59,8 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: tq758VBsyfTAqwjxk91gRF/projectcss
@@ -77,6 +79,7 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
+  embedHtml?: Flex__<typeof Embed>;
   section?: Flex__<"section">;
   h1?: Flex__<"h1">;
 };
@@ -139,6 +142,15 @@ function PlasmicHomepage__RenderFunc(props: {
             sty.root
           )}
         >
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              "<script src=\"https://telegram.org/js/telegram-web-app.js\"></script>\n    <script>\n        window.addEventListener('DOMContentLoaded', (event) => {\n            Telegram.WebApp.expand();\n        });\n    </script>"
+            }
+          />
+
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
@@ -164,7 +176,8 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "h1"],
+  root: ["root", "embedHtml", "section", "h1"],
+  embedHtml: ["embedHtml"],
   section: ["section", "h1"],
   h1: ["h1"]
 } as const;
@@ -173,6 +186,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  embedHtml: typeof Embed;
   section: "section";
   h1: "h1";
 };
@@ -237,6 +251,7 @@ export const PlasmicHomepage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    embedHtml: makeNodeComponent("embedHtml"),
     section: makeNodeComponent("section"),
     h1: makeNodeComponent("h1"),
 

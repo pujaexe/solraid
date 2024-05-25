@@ -65,6 +65,8 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import { LoadingBoundary } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -85,6 +87,11 @@ export const PlasmicLeaderboard__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicLeaderboard__OverridesType = {
   root?: Flex__<"div">;
+  embedHtml?: Flex__<typeof Embed>;
+  section?: Flex__<"section">;
+  loadingBoundary?: Flex__<typeof LoadingBoundary>;
+  text?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
   h1?: Flex__<"h1">;
   h3?: Flex__<"h3">;
 };
@@ -171,58 +178,108 @@ function PlasmicLeaderboard__RenderFunc(props: {
             sty.root
           )}
         >
-          <h1
-            data-plasmic-name={"h1"}
-            data-plasmic-override={overrides.h1}
-            className={classNames(
-              projectcss.all,
-              projectcss.h1,
-              projectcss.__wab_text,
-              sty.h1
-            )}
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              "<script src=\"https://telegram.org/js/telegram-web-app.js\"></script>\n    <script>\n        window.addEventListener('DOMContentLoaded', (event) => {\n            Telegram.WebApp.expand();\n        });\n    </script>"
+            }
+          />
+
+          <section
+            data-plasmic-name={"section"}
+            data-plasmic-override={overrides.section}
+            className={classNames(projectcss.all, sty.section)}
           >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $queries.query.data[0].user_id;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "not found";
-                  }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
-          </h1>
-          <h3
-            data-plasmic-name={"h3"}
-            data-plasmic-override={overrides.h3}
-            className={classNames(
-              projectcss.all,
-              projectcss.h3,
-              projectcss.__wab_text,
-              sty.h3
-            )}
-          >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $queries.query.data[0].twitter_link;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "notfound";
-                  }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
-          </h3>
+            <LoadingBoundary
+              data-plasmic-name={"loadingBoundary"}
+              data-plasmic-override={overrides.loadingBoundary}
+              className={classNames("__wab_instance", sty.loadingBoundary)}
+              loadingState={
+                <DataCtxReader__>
+                  {$ctx => (
+                    <div
+                      data-plasmic-name={"text"}
+                      data-plasmic-override={overrides.text}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text
+                      )}
+                    >
+                      {"Loading..."}
+                    </div>
+                  )}
+                </DataCtxReader__>
+              }
+            >
+              <DataCtxReader__>
+                {$ctx => (
+                  <Stack__
+                    as={"div"}
+                    data-plasmic-name={"freeBox"}
+                    data-plasmic-override={overrides.freeBox}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox)}
+                  >
+                    <h1
+                      data-plasmic-name={"h1"}
+                      data-plasmic-override={overrides.h1}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.h1,
+                        projectcss.__wab_text,
+                        sty.h1
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $queries.query.data[0].user_id;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "not found";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </h1>
+                    <h3
+                      data-plasmic-name={"h3"}
+                      data-plasmic-override={overrides.h3}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.h3,
+                        projectcss.__wab_text,
+                        sty.h3
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $queries.query.data[0].twitter_link;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "notfound";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </h3>
+                  </Stack__>
+                )}
+              </DataCtxReader__>
+            </LoadingBoundary>
+          </section>
         </div>
       </div>
     </React.Fragment>
@@ -230,7 +287,21 @@ function PlasmicLeaderboard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h1", "h3"],
+  root: [
+    "root",
+    "embedHtml",
+    "section",
+    "loadingBoundary",
+    "text",
+    "freeBox",
+    "h1",
+    "h3"
+  ],
+  embedHtml: ["embedHtml"],
+  section: ["section", "loadingBoundary", "text", "freeBox", "h1", "h3"],
+  loadingBoundary: ["loadingBoundary", "text", "freeBox", "h1", "h3"],
+  text: ["text"],
+  freeBox: ["freeBox", "h1", "h3"],
   h1: ["h1"],
   h3: ["h3"]
 } as const;
@@ -239,6 +310,11 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  embedHtml: typeof Embed;
+  section: "section";
+  loadingBoundary: typeof LoadingBoundary;
+  text: "div";
+  freeBox: "div";
   h1: "h1";
   h3: "h3";
 };
@@ -303,6 +379,11 @@ export const PlasmicLeaderboard = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    embedHtml: makeNodeComponent("embedHtml"),
+    section: makeNodeComponent("section"),
+    loadingBoundary: makeNodeComponent("loadingBoundary"),
+    text: makeNodeComponent("text"),
+    freeBox: makeNodeComponent("freeBox"),
     h1: makeNodeComponent("h1"),
     h3: makeNodeComponent("h3"),
 

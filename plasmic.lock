@@ -3,7 +3,10 @@
     {
       "projectId": "tq758VBsyfTAqwjxk91gRF",
       "version": "latest",
-      "dependencies": {},
+      "dependencies": {
+        "caTPwKxj5ZrD9LQ7DMdK4Z": "3.36.0",
+        "9Vr5YWkf3w7jj6SsTcCEta": "0.10.0"
+      },
       "lang": "ts",
       "fileLocks": [
         {
@@ -12,29 +15,57 @@
           "checksum": "24958e5c21b7cb3e83b683530ed2834c"
         },
         {
+          "type": "renderModule",
+          "assetId": "8FSsWtBeYiDI",
+          "checksum": "9eabafd15d2cc33955c2c1f231dd2158"
+        },
+        {
+          "type": "cssRules",
+          "assetId": "8FSsWtBeYiDI",
+          "checksum": "9eabafd15d2cc33955c2c1f231dd2158"
+        },
+        {
+          "type": "renderModule",
+          "assetId": "Tt7eHB_5Y9_Y",
+          "checksum": "240ea15985bb3caba3dade0ce983f2b8"
+        },
+        {
+          "type": "cssRules",
+          "assetId": "Tt7eHB_5Y9_Y",
+          "checksum": "240ea15985bb3caba3dade0ce983f2b8"
+        },
+        {
           "assetId": "tq758VBsyfTAqwjxk91gRF",
           "type": "projectCss",
           "checksum": "92471d54fd8a5fd3adfa11f731fe8621"
-        },
+        }
+      ],
+      "codegenVersion": "0.0.1"
+    },
+    {
+      "projectId": "9Vr5YWkf3w7jj6SsTcCEta",
+      "version": "0.10.0",
+      "dependencies": {},
+      "lang": "ts",
+      "fileLocks": [
         {
-          "type": "renderModule",
-          "assetId": "8FSsWtBeYiDI",
-          "checksum": "84681b09380d55224337e60b09e4dcf3"
-        },
+          "assetId": "9Vr5YWkf3w7jj6SsTcCEta",
+          "type": "projectCss",
+          "checksum": "e1ec850476829c38b0f9b6d4f7ac446a"
+        }
+      ],
+      "codegenVersion": "0.0.1"
+    },
+    {
+      "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
+      "version": "3.36.0",
+      "dependencies": {},
+      "lang": "ts",
+      "fileLocks": [
         {
-          "type": "cssRules",
-          "assetId": "8FSsWtBeYiDI",
-          "checksum": "84681b09380d55224337e60b09e4dcf3"
-        },
-        {
-          "type": "renderModule",
-          "assetId": "Tt7eHB_5Y9_Y",
-          "checksum": "264f17208e8d902c52f7ce15ee010305"
-        },
-        {
-          "type": "cssRules",
-          "assetId": "Tt7eHB_5Y9_Y",
-          "checksum": "264f17208e8d902c52f7ce15ee010305"
+          "assetId": "caTPwKxj5ZrD9LQ7DMdK4Z",
+          "type": "projectCss",
+          "checksum": "e1ec850476829c38b0f9b6d4f7ac446a"
         }
       ],
       "codegenVersion": "0.0.1"
