@@ -1,0 +1,98 @@
+{
+  "platform": "nextjs",
+  "code": {
+    "lang": "ts",
+    "scheme": "blackbox",
+    "reactRuntime": "classic"
+  },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+  },
+  "images": {
+    "scheme": "public-files",
+    "publicDir": "../public",
+    "publicUrlPrefix": "/"
+  },
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
+  "srcDir": "components",
+  "defaultPlasmicDir": "./plasmic",
+  "projects": [
+    {
+      "projectId": "tq758VBsyfTAqwjxk91gRF",
+      "projectApiToken": "asSmb3Orx3Ra1PamxarBdsl0yJRwUZ3wzyiZtYLPxWf5s1e7PZWUJUgtwUaNWoi4J6TChzDHLXQT8mNbpcg",
+      "projectName": "solraid",
+      "version": "latest",
+      "cssFilePath": "plasmic/solraid/plasmic.module.css",
+      "components": [
+        {
+          "id": "8FSsWtBeYiDI",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "tq758VBsyfTAqwjxk91gRF",
+          "renderModuleFilePath": "plasmic/solraid/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "../pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/solraid/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/"
+        },
+        {
+          "id": "Tt7eHB_5Y9_Y",
+          "name": "Leaderboard",
+          "type": "managed",
+          "projectId": "tq758VBsyfTAqwjxk91gRF",
+          "renderModuleFilePath": "plasmic/solraid/PlasmicLeaderboard.tsx",
+          "importSpec": {
+            "modulePath": "../pages/[user_id].tsx"
+          },
+          "cssFilePath": "plasmic/solraid/PlasmicLeaderboard.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/[user_id]"
+        }
+      ],
+      "icons": [],
+      "images": [],
+      "indirect": false,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "c_6eEKoyQH3C",
+          "name": "PlasmicHead",
+          "displayName": "hostless-plasmic-head",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "nmdiHQHmTmZX",
+          "name": "Fetcher",
+          "displayName": "plasmic-data-source-fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        }
+      ],
+      "customFunctions": []
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": [
+      {
+        "id": "MQThZP_NeuwF",
+        "name": "Screen",
+        "projectId": "tq758VBsyfTAqwjxk91gRF",
+        "contextFilePath": "plasmic/solraid/PlasmicGlobalVariant__Screen.tsx"
+      }
+    ]
+  },
+  "wrapPagesWithGlobalContexts": true,
+  "nextjsConfig": {
+    "pagesDir": "../pages"
+  },
+  "cliVersion": "0.1.330",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.330/dist/plasmic.schema.json"
+}
